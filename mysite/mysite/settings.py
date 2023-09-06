@@ -184,10 +184,16 @@ logging.config.dictConfig({
             "format": "%(asctime)s %(levelname)s [%(name)s %(lineno)s] %(module)s %(message)s",
         },
     },
+
     "handlers": {
         "console": {
             "class": "logging.StreamHandler",
             "formatter": "console",
+        },
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": "./debug.log",
         },
     },
     "loggers": {
@@ -195,7 +201,9 @@ logging.config.dictConfig({
             "level": LOGLEVEL,
             "handlers": [
                 "console",
+                "file",
             ],
+            "propagate": True,
         },
     },
 })
